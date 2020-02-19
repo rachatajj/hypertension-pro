@@ -13,7 +13,9 @@ import pandas as pd
 import numpy as np
 
 app = Flask(__name__, template_folder='templates')
-
+app.config['SESSION_TYPE'] = 'memcached'
+app.config['SECRET_KEY'] = 'super secret key'
+app.secret_key='super secret key'
 
 
 
@@ -414,5 +416,4 @@ def update():
     return render_template('update.html',birthdate=birthdate,username=username,bmi=bmi,name=name,weight=weight,height=height,blood_type=blood_type)
 
 if __name__ == '__main__':
-        app.secret_key='test1234'
         app.run(debug=True)
